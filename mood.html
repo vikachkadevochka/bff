@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Выбор Настроения</title>
+</head>
+<body>
+    <section>
+        <h1>Выберите Настроение</h1>
+        <p>День: <span id="selected-day"></span></p>
+        <input type="range" id="mood-slider" min="1" max="10" value="5">
+        <p>Настроение: <span id="mood-value">5</span></p>
+        <button id="save-button">Сохранить</button>
+        <button id="back-button">Назад</button>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>

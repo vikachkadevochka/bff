@@ -1,0 +1,157 @@
+/* Основные стили для всех страниц */
+body {
+    background-color: #cbc1af;
+    font-family: 'Comfortaa', cursive;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Заголовки */
+h1, h2 {
+    color: #f97038;
+    margin: 20px 0;
+}
+
+/* Стили для страницы входа */
+.login-container {
+    background-color: #f97038;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    margin: 100px auto;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: none;
+}
+
+button {
+    background-color: #931f09;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #543028;
+}
+
+#error-message {
+    display: none;
+    color: red;
+}
+
+/* Календарь на главной странице */
+.calendar-container {
+    background-color: #fbc27f;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Таблица календаря */
+table {
+    width: 100%;
+    border-spacing: 0px;
+}
+
+button.current-day {
+    background-color: #f97038;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    cursor: pointer; /* Указываем, что кнопка кликабельна */
+}
+
+/* График настроений */
+.chart-container {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 500px;
+}
+
+/* Страница выбора настроения */
+section {
+    margin: 20px auto;
+}
+
+input[type="range"] {
+    width: 90%;
+    max-width: 400px;
+}
+
+#mood-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 90%;
+    height: 15px;
+    border-radius: 10px;
+    background: #fbc27f;
+    outline: none;
+}
+
+#mood-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #f97038;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#mood-slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #f97038;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 600px) {
+    .calendar-container, .chart-container {
+        width: 100%;
+        padding: 10px; /* Добавляем немного отступа, чтобы избежать зажатости */
+    }
+
+    button {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    button.current-day {
+        padding: 8px;
+        font-size: 14px;
+        width: 35px; /* Уменьшаем ширину кнопки для мобильных */
+        height: 35px; /* Уменьшаем высоту кнопки для мобильных */
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse; /* Убираем пробелы между ячейками */
+    }
+
+    th, td {
+        padding: 5px; /* Уменьшаем отступы внутри ячеек */
+        text-align: center; /* Центрируем текст */
+    }
+
+    h1, h2 {
+        font-size: 24px;
+    }
+}
