@@ -11,61 +11,11 @@
     <section>
         <h1>Выберите Настроение</h1>
         <p>День: <span id="selected-day"></span></p>
-
-        <!-- Ползунок для настроения -->
         <input type="range" id="mood-slider" min="1" max="10" value="5">
         <p>Настроение: <span id="mood-value">5</span></p>
-
-        <!-- Кнопки -->
         <button id="save-button">Сохранить</button>
         <button id="back-button">Назад</button>
     </section>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const moodSlider = document.getElementById('mood-slider');
-            const moodValue = document.getElementById('mood-value');
-            const saveButton = document.getElementById('save-button');
-            const backButton = document.getElementById('back-button');
-
-            // Отображаем начальное значение ползунка
-            moodValue.textContent = moodSlider.value;
-
-            // Обновляем отображение значения ползунка при изменении
-            moodSlider.addEventListener('input', () => {
-                moodValue.textContent = moodSlider.value;
-            });
-
-            // Обработчик кнопки "Сохранить"
-            saveButton.addEventListener('click', () => {
-                const day = new Date().getDate();  // получаем текущий день
-                const mood = moodSlider.value;  // значение настроения
-
-                // Отправляем данные на сервер
-                fetch('/api/saveMood', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ day, mood })  // передаем данные о дне и настроении
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Настроение сохранено!');
-                        window.location.href = 'main.html';  // Переход на главную страницу
-                    } else {
-                        alert('Ошибка при сохранении.');
-                    }
-                })
-                .catch(error => console.error('Ошибка:', error));
-            });
-
-            // Обработчик кнопки "Назад"
-            backButton.addEventListener('click', () => {
-                window.location.href = 'main.html';  // Переход на главную страницу
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

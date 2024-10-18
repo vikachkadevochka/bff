@@ -126,7 +126,7 @@ input[type="range"] {
 @media (max-width: 600px) {
     .calendar-container, .chart-container {
         width: 100%;
-        padding: 10px; /* Добавляем немного отступа, чтобы избежать зажатости */
+        padding: 20px; /* Добавляем немного отступа, чтобы избежать зажатости */
     }
 
     button {
