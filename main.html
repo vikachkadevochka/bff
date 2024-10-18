@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head> <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
@@ -18,5 +19,80 @@
         <canvas id="mood-chart"></canvas>
     </div>
     <script src="script.js"></script>
+    <script>
+        // Данные настроений по дням
+        const moodData = new Array(31).fill(null); // массив для хранения настроений на 31 день
+
+        // Функция для отображения календаря
+        function renderCalendar() {
+            const calendar = document.getElementById('calendar');
+            calendar.innerHTML = ''; // очищаем календарь
+
+            const daysInMonth = 31; // количество дней в октябре
+            const rows = Math.ceil(daysInMonth / 7); // количество строк (неделя по 7 дней)
+
+            const today = new Date().getDate(); // Получаем текущий день месяца
+
+            // Создаем строки таблицы
+            for (let row = 0; row < rows; row++) {
+                const tr = document.createElement('tr'); // создаем новую строку
+                for (let i = row * 7 + 1; i <= (row + 1) * 7 && i <= daysInMonth; i++) {
+                    const td = document.createElement('td'); // создаем новую ячейку
+                    const button = document.createElement('button');
+
+                    button.innerText = i; // номер дня
+                    button.onclick = () => {
+                        // Перенаправляем на страницу выбора настроения с выбранным днем
+                        window.location.href = `mood.html?day=${i}`;
+                    };
+
+                    // Проверяем, если это текущий день
+                    if (i === today) {
+                        button.classList.add('current-day'); // добавляем класс для текущего дня
+                    }
+
+                    td.appendChild(button); // добавляем кнопку в ячейку
+                    tr.appendChild(td); // добавляем ячейку в строку
+                }
+                calendar.appendChild(tr); // добавляем строку в таблицу
+            }
+        }
+
+        // Функция для обновления графика настроений
+        function updateChart() {
+            const ctx = document.getElementById('mood-chart').getContext('2d');
+            const labels = Array.from({ length: 31 }, (_, i) => i + 1); // метки для дней
+            const data = moodData.map(mood => mood || 0); // значение настроений (0, если нет данных)
+
+            // Настройки графика
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Настроение',
+                        data: data,
+                        borderColor: '#f97038',
+                        fill: false,
+                        tension: 0.1,
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 10
+                        }
+                    }
+                }
+            });
+        }
+
+        // Инициализация страницы
+        window.onload = () => {
+            renderCalendar();
+            updateChart();
+        };
+    </script>
 </body>
 </html>
