@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Кәеф</title>
+    <style>
+        /* Стиль для всей страницы, чтобы клик в любом месте вел на login.html */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fbc27f;
+            font-family: 'Comfortaa', cursive;
+            cursor: pointer; /* Указываем, что всю страницу можно кликать */
+        }
+
+        /* Оформление заголовка */
+        h1 {
+            color: #931f09;
+            font-size: 48px;
+            text-align: center;
+        }
+
+        /* Стилизуем сердечки */
+        .hearts {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .heart {
+            width: 40px;
+            height: 40px;
+            background-color: #f97038;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 75% 57%, 85% 91%, 50% 72%, 15% 91%, 25% 57%, 2% 35%, 39% 35%);
+        }
+
+        /* Адаптивность для мобильных устройств */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .heart {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>жми</h1>
+
+    <!-- Сердечки внизу -->
+    <div class="hearts">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+    </div>
+
+    <script>
+        // Перенаправление на login.html при клике в любом месте
+        document.body.addEventListener('click', () => {
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
